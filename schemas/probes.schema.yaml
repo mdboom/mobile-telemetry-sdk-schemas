@@ -27,7 +27,7 @@ definitions:
             - boolean: true or false.
             - string: a Unicode string value.  Additional properties: `max_length`.
             - enum: a string with a fixes set of values. Additional properties:
-              `enum`.
+              `values`.
             - counter: A numeric value that can only be incremented.
             - gauge: A numeric value that can be set, incremented and
               decremented. The current value, minimum and maximum are tracked
@@ -136,7 +136,7 @@ definitions:
         type: integer
         minimum: 0
 
-      enum:
+      values:
         title: Supported values
         description: |
           A list of strings that are supported enum values.
