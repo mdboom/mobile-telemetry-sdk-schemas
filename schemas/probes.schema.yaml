@@ -11,6 +11,10 @@ definitions:
 
   probe:
     type: object
+
+    # TODO: The real schema should enable this to better catch typos
+    # additionalProperties: false
+
     properties:
       type:
         title: Probe type
