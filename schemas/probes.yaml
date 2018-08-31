@@ -1,0 +1,223 @@
+$schema: http://json-schema.org/draft-06/schema#
+title: Probes
+description: |
+  Schema for the probes.yaml file for the proposed Mozilla Mobile Telemetry SDK.
+$id: http://mozilla.org/schemas/mobile-telemetry-sdk/probes
+
+definitions:
+  token:
+    type: string
+    pattern: "^[A-Za-z_][A-Za-z0-9_\\.]*$"
+
+  probe:
+    type: object
+    properties:
+      type:
+        title: Probe type
+        description: |
+          Specifies the type of a probe, like "counter" or "event". This defines
+          which operations are valid for the probe, how it is stored and how
+          data analysis tooling displays it.
+
+          The supported types are:
+            - boolean: true or false.
+            - string: a Unicode string value.  Additional properties: `max_length`.
+            - enum: a string with a fixes set of values. Additional properties:
+              `enum`.
+            - counter: A numeric value that can only be incremented.
+            - gauge: A numeric value that can be set, incremented and
+              decremented. The current value, minimum and maximum are tracked
+              and sent in the ping.  Additional properites: `minimum`, `maximum`.
+            - timer: Records time interval measurements. Additional properties:
+              `minimum`, `maximum`, `precision`.
+            - datetime: A date/time value.  Represented as an ISO datetime in UTC.
+              Additional properties: `precision`.
+            - ratio: Records the value of one value in relation to another
+              value. Represented internally as a numerator and denominator,
+              either of which can be incremented separately.
+            - usage: Record for how many sessions or users a feature or
+              component is used.
+            - rate: Record the ratio of one value over time. Additional
+              properties: `interval`.
+            - event: TBD ???
+
+            ???: Do we need to expose these here? They seem to be completely
+            redundant.
+            - scalar:
+            - histogram:
+        type: string
+        enum:
+          - boolean
+          - string
+          - label
+          - counter
+          - gauge
+          - timer
+          - datetime
+          - ratio
+          - usage
+          - rate
+          - event
+
+      name:
+        allOf:
+          - title: Name
+            description: The name of the probe
+          - $ref: "#/definitions/token"
+
+      description:
+        title: Description
+        description: |
+          A textual description of what this probe does, means, its edge cases
+          and any other helpful information.
+        type: string
+
+      user_property:
+        title: User property
+        description: |
+          If true, the probe contains a property that is part of the user's
+          profile and is not reset after sending in a ping.
+        type: boolean
+        default: false
+
+      application_property:
+        title: Application property
+        description: |
+          If true, the probe contains a property that is related to the
+          application, and is not reset after sending in a ping.
+        type: boolean
+        default: false
+
+      pings:
+        title: Pings
+        description: |
+          Which pings the probe should be sent on. If not specified, the probe
+          is send on the "default ping", which is the "events" ping for events,
+          and the "metrics" ping for everything else. Most probe don't need to
+          specify this.
+        type: array
+        items:
+          $ref: "#/definitions/token"
+
+      emails:
+        title: Notification emails
+        description: |
+          A list of email addresses to notify for important events with the
+          probe or when people with context or ownership for the probe need to
+          contacted.
+        type: array
+        items:
+          type: string
+          format: email
+
+      bugs:
+        title: Related bugs
+        description: |
+          A list of bugs (e.g. Bugzilla and Github) that are relevant to this
+          probe, e.g., tracking its original implementation or later changes to
+          it.
+        type: array
+        items:
+          anyOf:
+            - type: integer
+            - type: string
+              format: uri
+
+      max_length:
+        title: Maximum string length
+        description: |
+          The maximum length of the string.
+
+          Valid when `type` is `string`.
+        type: integer
+        minimum: 0
+
+      enum:
+        title: Supported values
+        description: |
+          A list of strings that are supported enum values.
+
+          Valid when `type` is `enum`.
+        type: array
+        items:
+          type: string
+
+      minimum:
+        title: Minimum value
+        description: |
+          An expected minimum value for the probe.
+
+          # ???: What units are timers in?  Explicitly specified?
+
+          Valid when `type` is `gauge` or `timer`.
+        type: number
+
+      maximum:
+        title: Maximum value
+        description: |
+          An expected maximum value for the probe.
+
+          # ???: What units are timers in?  Explicitly specified?
+
+          Valid when `type` is `gauge` or `timer`.
+        type: number
+
+      # ???: Do we need this? What is the default precision of timer and
+      # datetime types?
+      precision:
+        title: Timer precision
+        description: |
+          The maximum resolution of the timer, in nanoseconds.
+
+          Valid when `type` is `timer` or `datetime`.
+        type: number
+
+      # ???: Do we need this?
+      interval:
+        title: Time interval
+        description: |
+          The time interval over which a rate probe is calculated.
+
+          Valid when `type` is `rate`.
+        type: number
+
+      labeled:
+        title: Labeled probe
+        description: |
+          Record multiple separate probes under different labels.
+          The labels may be known ahead of time (provided in the `labels`
+          property) or be dynamic at rutime.
+        type: boolean
+
+      labels:
+        title: Labels
+        description: |
+          A list of labels for a labeled probe.
+
+          Valid when `labeled` is `true`.
+        type: array
+        items:
+          type: string
+
+    required:
+      - type
+      - name
+
+type: object
+
+propertyNames:
+  anyOf:
+    - $ref: "#/definitions/token"
+    - enum: ['$schema']
+
+properties:
+  $schema:
+    type: string
+    format: url
+
+additionalProperties:
+  type: object
+  propertyNames:
+    $ref: "#/definitions/token"
+  additionalProperies:
+    $ref: "#/definitions/probe"

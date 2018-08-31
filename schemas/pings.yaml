@@ -1,0 +1,31 @@
+$schema: http://json-schema.org/draft-06/schema#
+title: Pings
+description: |
+  Schema for the pings.yaml file for the proposed Mozilla Mobile Telemetry SDK.
+$id: http://mozilla.org/schemas/mobile-telemetry-sdk/pings
+
+definitions:
+  token:
+    type: string
+    pattern: ^[A-Za-z_][A-Za-z0-9_\.]*$
+
+type: object
+
+propertyNames:
+  anyOf:
+    - $ref: "#/definitions/token"
+    - enum: ['$schema']
+
+properties:
+  $schema:
+    type: string
+    format: url
+
+additionalProperties:
+  type: object
+  properties:
+    description:
+      title: Ping description
+      description: |
+        A description of the ping and its purpose. Used for informational
+        purposes only.

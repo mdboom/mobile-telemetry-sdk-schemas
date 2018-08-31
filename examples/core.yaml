@@ -1,0 +1,265 @@
+$schema: http://mozilla.org/schemas/mobile-telemetry-sdk/probes
+
+telemetry:
+  client_id:
+    type: string
+    user_property: true
+    <expiration_attr>: …
+    description: >
+      A UUID identifying a profile and allowing user-oriented
+      Correlation of data.
+    bugs:
+      - 1137353
+    notification_emails:
+      - telemetry-client-dev@mozilla.com
+    pings:
+      - ... other pings ...
+      - core
+
+core_ping:
+  seq:
+    type: counter
+    application_property: true
+    <expiration_attr>: …
+    description: >
+      Running ping counter for this ping. This works as a sequence
+      number to allow detecting for missing pings.
+    bugs:
+      - 1137353
+    notification_emails:
+      - telemetry-client-dev@mozilla.com
+    pings:
+      - core
+
+  created:
+    type: datetime
+    precision: daily
+    <expiration_attr>: …
+    description: >
+      The date the ping was created, in local time.
+    bugs:
+      - 1137353
+    notification_emails:
+      - telemetry-client-dev@mozilla.com
+    pings:
+      - core
+
+  sessions:
+    type: counter
+    <expiration_attr>: …
+    description: >
+      The number of sessions since the last upload.
+    bugs:
+      - 1137353
+    notification_emails:
+      - telemetry-client-dev@mozilla.com
+    pings:
+      - core
+
+  durations:
+    type: number
+    <expiration_attr>: …
+    description: >
+      The combined duration, in seconds, of all the sessions
+      since the last upload.
+    bugs:
+      - 1137353
+    notification_emails:
+      - telemetry-client-dev@mozilla.com
+    pings:
+      - core
+
+  searches:
+    type: counter
+    labeled: true
+    <expiration_attr>: …
+    description: >
+      The search use counts for each search source and engine
+      combination, e.g. “engine.source” = 3.
+    bugs:
+      - 1137353
+    notification_emails:
+      - telemetry-client-dev@mozilla.com
+    pings:
+      - core
+
+  flashUsage:
+    type: counter
+    <expiration_attr>: …
+    description: >
+      The number of times the flash plugin was used since the last
+      upload.
+    bugs:
+      - 1137353
+    notification_emails:
+      - telemetry-client-dev@mozilla.com
+    pings:
+      - core
+
+  defaultBrowser:
+    type: boolean
+    <expiration_attr>: …
+    description: >
+      True if the user has set Firefox as the default browser.
+    bugs:
+      - 1137353
+    notification_emails:
+      - telemetry-client-dev@mozilla.com
+    pings:
+      - core
+
+environment:
+  locale:
+    type: string
+    application_property: true
+    <expiration_attr>: …
+    description: The application locale, e.g. “en-US”.
+    bugs:
+      - 1137353
+    notification_emails:
+      - telemetry-client-dev@mozilla.com
+    pings:
+      - ... other pings ...
+      - core
+
+  os:
+    type: enumeration
+    application_property: true
+    labels:
+      - linux
+      - android
+      - ios
+    <expiration_attr>: …
+    description: The name of the operating system.
+    bugs:
+      - 1137353
+    notification_emails:
+      - telemetry-client-dev@mozilla.com
+    pings:
+      - ... other pings ...
+      - core
+
+  os_version:
+    type: string
+    application_property: true
+    <expiration_attr>: …
+    description: The name of the operating system.
+    bugs:
+      - 1137353
+    notification_emails:
+      - telemetry-client-dev@mozilla.com
+    pings:
+      - ... other pings ...
+      - core
+
+  device:
+    type: string
+    application_property: true
+    <expiration_attr>: …
+    description: >
+      Build.MANUFACTURER + " - " + Build.MODEL, where manufacturer is
+      truncated to 12 characters & model is truncated to 19
+      characters.
+    bugs:
+      - 1137353
+    notification_emails:
+      - telemetry-client-dev@mozilla.com
+    pings:
+      - ... other pings ...
+      - core
+
+  arch:
+    type: enumeration
+    application_property: true
+    labels:
+      - arm
+      - x86
+    <expiration_attr>: …
+    Description: The architecture of the device.
+    bugs:
+      - 1137353
+    notification_emails:
+      - telemetry-client-dev@mozilla.com
+
+  profileDate:
+    type: datetime
+    user_property: true
+    <expiration_attr>: …
+    description: Profile creation date, ISO date with daily precision.
+    precision: daily
+    bugs:
+      - 1137353
+    notification_emails:
+      - telemetry-client-dev@mozilla.com
+    pings:
+      - ... other pings ...
+      - core
+
+  defaultSearch:
+    type: string
+    application_property: true
+    <expiration_attr>: …
+    description: >
+      Identifier of the default search engine, e.g. “yahoo”.
+    bugs:
+      - 1137353
+    notification_emails:
+      - telemetry-client-dev@mozilla.com
+    pings:
+      - ... other pings ...
+      - core
+
+  displayVersion:
+    type: string
+    application_property: true
+    <expiration_attr>: …
+    description: >
+      Version displayed to the user, e.g. “57.0b2”.
+    bugs:
+      - 1137353
+    notification_emails:
+      - telemetry-client-dev@mozilla.com
+    pings:
+      - ... other pings ...
+      - core
+
+  distributionId:
+    type: string
+    application_property: true
+    <expiration_attr>: …
+    description: >
+      Distribution identifier, e.g. “lollipop”.
+    bugs:
+      - 1137353
+    notification_emails:
+      - telemetry-client-dev@mozilla.com
+    pings:
+      - ... other pings ...
+      - core
+
+  campaignId:
+    type: string
+    application_property: true
+    <expiration_attr>: …
+    description: >
+      Adjust’s campaign identifier.
+    bugs:
+      - 1137353
+    notification_emails:
+      - telemetry-client-dev@mozilla.com
+    pings:
+      - ... other pings ...
+      - core
+
+  tz:
+    type: number
+    <expiration_attr>: …
+    description: >
+      The timezone offset(in minutes) of the device when the
+      ping was created.
+    bugs:
+      - 1137353
+    notification_emails:
+      - telemetry-client-dev@mozilla.com
+    pings:
+      - core
