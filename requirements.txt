@@ -1,2 +1,2 @@
-PyYAML=3.13
+PyYAML==3.13
 git+git://github.com/Julian/jsonschema.git@v3.0.0a2
