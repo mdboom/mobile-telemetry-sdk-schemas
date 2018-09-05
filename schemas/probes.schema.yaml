@@ -26,6 +26,7 @@ definitions:
           The supported types are:
             - boolean: true or false.
             - string: a Unicode string value.  Additional properties: `max_length`.
+            - number: A numeric scalar
             - enumeration: a string with a fixes set of values. Additional properties:
               `values`.
             - counter: A numeric value that can only be incremented.
@@ -48,12 +49,12 @@ definitions:
 
             ???: Do we need to expose these here? They seem to be completely
             redundant.
-            - scalar:
             - histogram:
         type: string
         enum:
           - boolean
           - string
+          - number
           - enumeration
           - counter
           - gauge

@@ -242,7 +242,7 @@ environment:
       - core
 
   tz:
-    type: timespan
+    type: number
     expiration_attr: …
     description: >
       The timezone offset(in minutes) of the device when the
