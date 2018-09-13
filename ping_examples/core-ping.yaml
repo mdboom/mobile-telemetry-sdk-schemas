@@ -1,0 +1,88 @@
+metadata:
+  ping_type_name:
+    core
+  client_id:
+    f99fbfb6...
+  app_build:
+    59f330e5...
+  telemetry_sdk_build:
+    abcdabcd...
+  seq:
+    1
+
+metrics:
+  device:
+    os:
+      android
+    os_version:
+      8.0.0
+    device:
+      Motorola X4
+    architecture:
+      arm
+    tz:
+      -5
+    accessibility_services:
+      - screen_reader
+      - contrast
+
+  metric_types:
+    boolean:
+      true
+    string:
+      英漢字典
+    string_list:
+      - A
+      - B
+      - C
+    enumeration:
+      value1
+    counter:
+      42
+    gauge:
+      value: 42
+      minimum: 0
+      maximum: 100
+    timespan:
+      # unit is specified in the metric definition
+      0.2
+    multiple_timespan:
+      underflow:
+        2
+      bins:
+        - 1
+        - 1
+        - 4
+        - 5
+        - 2
+      overflow:
+        3
+    datetime:
+      # ISO8601 in UTC
+      2018-09-13T19:08:30.234Z
+    ratio:
+      num: 3
+      den: 16
+    usage:
+      true
+    rate:
+      3
+    labeled:
+      label1: 42
+      label2: 1243
+      other: 321
+
+errors:
+  invalid_type:
+    device.os:
+      4
+  invalid_value:
+    device.tz:
+      2
+
+events:
+  -
+    type: session_start
+    time: 2018-09-13T19:08:30.234Z
+    data:
+      foo: bar
