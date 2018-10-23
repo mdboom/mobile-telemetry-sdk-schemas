@@ -238,7 +238,7 @@ definitions:
         title: Labels
         description: |
           A list of labels for a labeled metric or use counter.
-          
+
           Valid when `labeled` is `true`.
         type: array
         items:
@@ -301,7 +301,6 @@ properties:
 additionalProperties:
   type: object
   propertyNames:
-    anyOf:
-      - $ref: "#/definitions/very_short_id"
+    $ref: "#/definitions/very_short_id"
   additionalProperties:
     $ref: "#/definitions/metric"

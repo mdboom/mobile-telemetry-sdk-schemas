@@ -1,77 +1,73 @@
-$schema: http://mozilla.org/schemas/mobile-telemetry-sdk/probes
+$schema: http://mozilla.org/schemas/glean/metrics
 
 telemetry:
   client_id:
     type: string
     user_property: true
-    expiration_attr: …
     description: >
       A UUID identifying a profile and allowing user-oriented
       Correlation of data.
+      Some Unicode: جمع 搜集
     bugs:
       - 1137353
     notification_emails:
       - telemetry-client-dev@mozilla.com
-    pings:
+    send_in_pings:
       - core
 
 core_ping:
   seq:
     type: counter
     application_property: true
-    expiration_attr: …
     description: >
       Running ping counter for this ping. This works as a sequence
-      number to allow detecting for missing pings.
+      number to allow detecting for missing send_in_pings.
     bugs:
       - 1137353
     notification_emails:
       - telemetry-client-dev@mozilla.com
-    pings:
+    send_in_pings:
       - core
 
   created:
     type: datetime
-    precision: daily
-    expiration_attr: …
+    time_unit: day
     description: >
-      The date the ping was created, in local time.
+      The date the ping was created.
     bugs:
       - 1137353
     notification_emails:
       - telemetry-client-dev@mozilla.com
-    pings:
+    send_in_pings:
       - core
 
   sessions:
     type: counter
-    expiration_attr: …
     description: >
       The number of sessions since the last upload.
     bugs:
       - 1137353
     notification_emails:
       - telemetry-client-dev@mozilla.com
-    pings:
+    send_in_pings:
       - core
 
   durations:
     type: timespan
-    expiration_attr: …
     description: >
       The combined duration, in seconds, of all the sessions
       since the last upload.
+    time_unit: second
     bugs:
       - 1137353
     notification_emails:
       - telemetry-client-dev@mozilla.com
-    pings:
+    send_in_pings:
       - core
 
   searches:
     type: counter
     labeled: true
-    expiration_attr: …
     description: >
       The search use counts for each search source and engine
       combination, e.g. “engine.source” = 3.
@@ -79,12 +75,11 @@ core_ping:
       - 1137353
     notification_emails:
       - telemetry-client-dev@mozilla.com
-    pings:
+    send_in_pings:
       - core
 
-  flashUsage:
+  flash_usage:
     type: counter
-    expiration_attr: …
     description: >
       The number of times the flash plugin was used since the last
       upload.
@@ -92,32 +87,30 @@ core_ping:
       - 1137353
     notification_emails:
       - telemetry-client-dev@mozilla.com
-    pings:
+    send_in_pings:
       - core
 
-  defaultBrowser:
+  default_browser:
     type: boolean
-    expiration_attr: …
     description: >
       True if the user has set Firefox as the default browser.
     bugs:
       - 1137353
     notification_emails:
       - telemetry-client-dev@mozilla.com
-    pings:
+    send_in_pings:
       - core
 
 environment:
   locale:
     type: string
     application_property: true
-    expiration_attr: …
     description: The application locale, e.g. “en-US”.
     bugs:
       - 1137353
     notification_emails:
       - telemetry-client-dev@mozilla.com
-    pings:
+    send_in_pings:
       - core
 
   os:
@@ -127,31 +120,28 @@ environment:
       - linux
       - android
       - ios
-    expiration_attr: …
     description: The name of the operating system.
     bugs:
       - 1137353
     notification_emails:
       - telemetry-client-dev@mozilla.com
-    pings:
+    send_in_pings:
       - core
 
   os_version:
     type: string
     application_property: true
-    expiration_attr: …
-    description: The name of the operating system.
+    description: The version of the operating system.
     bugs:
       - 1137353
     notification_emails:
       - telemetry-client-dev@mozilla.com
-    pings:
+    send_in_pings:
       - core
 
   device:
     type: string
     application_property: true
-    expiration_attr: …
     description: >
       Build.MANUFACTURER + " - " + Build.MODEL, where manufacturer is
       truncated to 12 characters & model is truncated to 19
@@ -160,7 +150,7 @@ environment:
       - 1137353
     notification_emails:
       - telemetry-client-dev@mozilla.com
-    pings:
+    send_in_pings:
       - core
 
   arch:
@@ -169,87 +159,83 @@ environment:
     labels:
       - arm
       - x86
-    expiration_attr: …
-    Description: The architecture of the device.
+    description: The architecture of the device.
     bugs:
       - 1137353
     notification_emails:
       - telemetry-client-dev@mozilla.com
 
-  profileDate:
+  profile_date:
     type: datetime
     user_property: true
-    expiration_attr: …
-    description: Profile creation date, ISO date with daily precision.
-    precision: daily
+    description: Profile creation date.
+    time_unit: day
     bugs:
       - 1137353
     notification_emails:
       - telemetry-client-dev@mozilla.com
-    pings:
+    send_in_pings:
       - core
 
-  defaultSearch:
+  default_search:
     type: string
     application_property: true
-    expiration_attr: …
     description: >
       Identifier of the default search engine, e.g. “yahoo”.
     bugs:
       - 1137353
     notification_emails:
       - telemetry-client-dev@mozilla.com
-    pings:
+    send_in_pings:
       - core
 
-  displayVersion:
+  display_version:
     type: string
     application_property: true
-    expiration_attr: …
     description: >
       Version displayed to the user, e.g. “57.0b2”.
     bugs:
       - 1137353
     notification_emails:
       - telemetry-client-dev@mozilla.com
-    pings:
+    send_in_pings:
       - core
 
-  distributionId:
+  distribution_id:
     type: string
     application_property: true
-    expiration_attr: …
     description: >
       Distribution identifier, e.g. “lollipop”.
     bugs:
       - 1137353
     notification_emails:
       - telemetry-client-dev@mozilla.com
-    pings:
+    send_in_pings:
       - core
 
-  campaignId:
+  campaign_id:
     type: string
     application_property: true
-    expiration_attr: …
     description: >
       Adjust’s campaign identifier.
     bugs:
       - 1137353
     notification_emails:
       - telemetry-client-dev@mozilla.com
-    pings:
+    send_in_pings:
       - core
 
-  tz:
-    type: number
-    expiration_attr: …
+  event_example:
+    type: event
     description: >
-      The timezone offset(in minutes) of the device when the
-      ping was created.
+      Just testing events
     bugs:
-      - 1137353
+      - 123456789
     notification_emails:
       - telemetry-client-dev@mozilla.com
-    pings:
-      - core
+    objects:
+      - object1
+      - object2
+    extra_keys:
+      key1: "This is key one"
+      key2: "This is key two"
