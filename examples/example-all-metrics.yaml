@@ -3,7 +3,7 @@ $schema: http://mozilla.org/schemas/glean/ping
 
 ping_info:
   ping_type:
-    core
+    full
   app_build:
     59f330e5...
   telemetry_sdk_build:

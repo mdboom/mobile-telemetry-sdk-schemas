@@ -1,7 +1,7 @@
 {
   "$schema": "http://mozilla.org/schemas/glean/ping",
   "ping_info": {
-    "ping_type": "core",
+    "ping_type": "lean",
     "app_build": "59f330e5a425",
     "telemetry_sdk_build": "abcdabcd1423",
     "client_id": "36f7deeb-9f16-424f-a234-d0021e494ef",
