@@ -2,7 +2,7 @@
   "$schema": "http://json-schema.org/draft-06/schema#",
   "title": "Ping transport",
   "description": "Schema for the ping content sent by Mozilla's glean telemetry SDK\n",
-  "$id": "http://mozilla.org/schemas/glean/ping",
+  "$id": "http://mozilla.org/schemas/glean/ping/1",
   "definitions": {
     "token": {
       "type": "string",
@@ -95,7 +95,7 @@
   "properties": {
     "$schema": {
       "enum": [
-        "http://mozilla.org/schemas/glean/ping"
+        "http://mozilla.org/schemas/glean/ping/1"
       ]
     },
     "ping_info": {
