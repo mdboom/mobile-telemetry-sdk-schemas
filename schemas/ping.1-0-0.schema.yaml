@@ -3,7 +3,8 @@ title: Ping transport
 description: |
   Schema for the ping content sent by Mozilla's glean telemetry SDK
 
-$id: moz://mozilla.org/schemas/glean/ping/1
+# Versioning follows SchemaVer (https://github.com/snowplow/iglu/wiki/SchemaVer)
+$id: moz://mozilla.org/schemas/glean/ping/1-0-0
 
 definitions:
   # TODO: Remove the duplication on this basic stuff between here and metrics.schema.yaml
@@ -75,7 +76,7 @@ type: object
 properties:
   $schema:
     enum:
-      - moz://mozilla.org/schemas/glean/ping/1
+      - moz://mozilla.org/schemas/glean/ping/1-0-0
 
   ping_info:
     type: object

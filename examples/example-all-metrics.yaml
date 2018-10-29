@@ -1,4 +1,4 @@
-$schema: moz://mozilla.org/schemas/glean/ping/1
+$schema: moz://mozilla.org/schemas/glean/ping/1-0-0
 
 
 ping_info:
