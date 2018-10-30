@@ -1,0 +1,38 @@
+{
+  "$schema": "moz://mozilla.org/schemas/glean/ping/1-0-0",
+  "ping_info": {
+    "ping_type": "lean",
+    "app_build": "59f330e5a425",
+    "telemetry_sdk_build": "abcdabcd1423",
+    "client_id": "36f7deeb-9f16-424f-a234-d0021e494ef",
+    "seq": 1,
+    "start_time": "2018-10-23 11:23:15-04:00",
+    "end_time": "2018-10-23 11:23:15-04:25"
+  },
+  "metrics": {
+    "counter": {
+      "core.sessions": 3
+    },
+    "timespan": {
+      "core.durations": {
+        "value": 42,
+        "time_unit": "second"
+      }
+    },
+    "string": {
+      "core.os": "android",
+      "core.os_version": "8.0.1",
+      "core.device": "Motorola G5",
+      "core.architecture": "arm"
+    },
+    "number": {
+      "core.timezone": -5
+    },
+    "string_list": {
+      "core.accessibility_services": [
+        "tts",
+        "magnifier"
+      ]
+    }
+  }
+}
